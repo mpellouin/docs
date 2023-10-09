@@ -1,0 +1,63 @@
+---
+title: "Login user"
+api: "POST https://trottapi.onrender.com/auth/login"
+description: "This endpoint logs in an user to Trotter"
+---
+
+### Body
+
+<ParamField body="password" type="string">
+  This is the password of the account that will be created.
+</ParamField>
+
+<ParamField body="email" type="string">
+  This is the email of the account that will be created.
+</ParamField>
+
+### Response (on success)
+
+<ResponseField name="accessToken" type="string">
+  The accessToken to be used to access private routes of the API.
+</ResponseField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://trottapi.onrender.com/auth/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "password": "",
+    "email": ""
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2V4YW1wbGUuYXV0aDAuY29tLyIsImF1ZCI6Imh0dHBzOi8vYXBpLmV4YW1wbGUuY29tL2NhbGFuZGFyL3YxLyIsInN1YiI6InVzcl8xMjMiLCJpYXQiOjE0NTg3ODU3OTYsImV4cCI6MTQ1ODg3MjE5Nn0.CA7eaHjIHz5NxeIJoFK9krqaeZrPLwmMmgI_XiQiIkQ"
+}
+```
+
+</ResponseExample>
+
+### Error response codes
+
+<CardGroup cols="2">
+    <Card title="400 Bad Request" icon="exclamation" color="#ff0000">
+        Body is invalid or incomplete
+    </Card>
+
+    <Card title="401 Unauthorized"  icon="xmark" color="#ff0000">
+        Wrong email or password provided
+    </Card>
+
+    <Card title="500 Internal Server Error" icon="bomb" color="#ff0000">
+        Something went wrong. Please contact the owner of this site.
+    </Card>
+</CardGroup>
+
+

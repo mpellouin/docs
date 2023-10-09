@@ -49,15 +49,13 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development", "api-reference/authentication.mdx"]
+      "pages": ["introduction", "quickstart", "development", "api-reference/authentication"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Local Authentication",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/update",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/authentication/register",
+        "api-reference/endpoint/authentication/login"
       ]
     }
   ]
