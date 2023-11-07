@@ -59,6 +59,19 @@
       ]
     },
     {
+      "group": "OAuth",
+      "pages": [
+        "api-reference/endpoint/authentication/OAuth/x",
+        "api-reference/endpoint/authentication/OAuth/facebook",
+        "api-reference/endpoint/authentication/OAuth/google",
+        "api-reference/endpoint/authentication/OAuth/linkedin",
+        "api-reference/endpoint/authentication/OAuth/x.redirect",
+        "api-reference/endpoint/authentication/OAuth/facebook.redirect",
+        "api-reference/endpoint/authentication/OAuth/google.redirect",
+        "api-reference/endpoint/authentication/OAuth/linkedin.redirect"
+      ]
+    },
+    {
       "group": "Trips",
       "pages": [
         "api-reference/endpoint/trips/ai",

@@ -3,20 +3,22 @@ title: "Authentication"
 description: "Example overview page before API endpoints"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et eros iaculis tortor dapibus cursus. Curabitur quis sapien nec tortor dictum gravida.
+# Authentication
+
+Authentication is an important topics in securing an API. Indeed most of the time, not all function should be publicly available and therefore some kind of auth is required. As for us, we are using basic jwt token authentication, meaning on protected routes, you've got to add the following header:
 
 ```bash
-'Authorization': 'Token <team_token>'
+'Authorization': 'Bearer <token>'
 ```
 
-## API Tokens
+with token in place of \<token\>.
 
-Nullam convallis mauris at nunc consectetur, ac imperdiet leo rutrum. Maecenas cursus purus a pellentesque blandit. Pellentesque vitae lacinia libero, non mollis metus.
+The token is then retrieved by our API to check if it matches with some user's token in our DB. If no token is provided or if it is invalid, the API will just respond with a 401 Unauthorized code.
 
-Nam id ullamcorper urna, at rutrum enim. [Maecenas vulputate](/introduction) vehicula libero, vitae sodales augue pretium nec. Quisque a magna tempor, semper risus vel, fermentum nunc. Pellentesque fermentum interdum ex, eu convallis massa blandit sed. Aliquam bibendum ipsum vel laoreet auctor.
+# OAuth
 
-### Permissions
+As per OAuth, the system is pretty simple. If a user needs to connect through one of our OAuth providers, then he just has to call the endpoint as such: GET /auth/\<provider\>
 
-Etiam lobortis ut odio ut fermentum. Nunc odio velit, sollicitudin at consectetur id, tristique eget turpis. Aliquam at risus vitae dolor sodales venenatis. In hac habitasse platea dictumst.
+This will open up a pop-up asking user for contents and the page will get redirected back to the app with credentials as parameters.
 
-Aenean consequat diam eget mollis fermentum. [Quisque eu malesuada](/introduction) felis, non dignissim libero.
+It is fairly easy on the front-end side but might be more complicated on the back-end side. Do not hesitate to contact back end developers.
