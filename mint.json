@@ -57,6 +57,47 @@
         "api-reference/endpoint/authentication/register",
         "api-reference/endpoint/authentication/login"
       ]
+    },
+    {
+      "group": "Trips",
+      "pages": [
+        "api-reference/endpoint/trips/ai",
+        "api-reference/endpoint/trips/create",
+        "api-reference/endpoint/trips/delete",
+        "api-reference/endpoint/trips/edit",
+        "api-reference/endpoint/trips/get",
+        "api-reference/endpoint/trips/getAll"
+      ]
+    },
+    {
+      "group": "Notation",
+      "pages": [
+        "api-reference/endpoint/notation/create",
+        "api-reference/endpoint/notation/delete",
+        "api-reference/endpoint/notation/edit",
+        "api-reference/endpoint/notation/get",
+        "api-reference/endpoint/notation/getAll"
+      ]
+    },
+    {
+      "group": "interests",
+      "pages": [
+        "api-reference/endpoint/interests/create",
+        "api-reference/endpoint/interests/delete",
+        "api-reference/endpoint/interests/edit",
+        "api-reference/endpoint/interests/get",
+        "api-reference/endpoint/interests/getAll"
+      ]
+    },
+    {
+      "group": "Events",
+      "pages": [
+        "api-reference/endpoint/event/create",
+        "api-reference/endpoint/event/delete",
+        "api-reference/endpoint/event/edit",
+        "api-reference/endpoint/event/get",
+        "api-reference/endpoint/event/getAll"
+      ]
     }
   ]
 }

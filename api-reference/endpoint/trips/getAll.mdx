@@ -1,0 +1,69 @@
+---
+title: "Get Trips"
+api: "GET https://trottapi.onrender.com/trips"
+description: "This endpoint gets all the trips of specified user"
+---
+
+### Header
+
+<ParamField type="string" header="Authorization">
+    Header in form of Bearer \<jwt\>
+</ParamField>
+
+### Response
+**An array of:**
+<ResponseField name="ownerId" type="string">
+    The id of the response owner
+</ResponseField>
+<ResponseField name="startDate" type="date">
+</ResponseField>
+<ResponseField name="endDate" type="date">
+</ResponseField>
+<ResponseField name="createdAt" type="date">
+</ResponseField>
+<ResponseField name="housingCoordinates" type="number[2]">
+    The coordinates of the hotel
+</ResponseField>
+<ResponseField name="cityName" type="string">
+</ResponseField>
+<ResponseField name="stepsDate" type="date[]">
+    The date of each point of interest of the trip
+</ResponseField>
+<ResponseField name="stepsPoi" type="string[]">
+    The name of each point of interest of the trip
+</ResponseField>
+<ResponseField name="stepsLat" type="number[]">
+</ResponseField>
+<ResponseField name="stepsLon" type="number[]">
+</ResponseField>
+<ResponseField name="stepsTags" type="string[]">
+</ResponseField>
+<ResponseField name="isShared" type="boolean">
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://trottapi.onrender.com/api/user' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>' \
+```
+
+</RequestExample>
+
+{/* <ResponseExample>
+
+```json Response
+{
+  "success": 1,
+  "new_user_group": true,
+  "user_group": {
+    "team_id": 3,
+    "token": "<user_group_token_to_auth_dashboard>",
+    "name": "Example 1",
+    "provided_id": "example_1"
+  }
+}
+```
+
+</ResponseExample> */}

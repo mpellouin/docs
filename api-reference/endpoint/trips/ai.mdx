@@ -1,0 +1,129 @@
+---
+title: "Generate a trip"
+api: "POST https://trottapi.onrender.com/IA"
+description: "This endpoint generates given data for a trip itinerary"
+---
+
+### Params
+
+<ParamField type="string" header="Authorization">
+    Header in form of Bearer \<jwt\>
+</ParamField>
+
+### Body
+
+<ParamField body="lon" type="number">
+  This is the longitude of our central point, i.e the hotel.
+</ParamField>
+
+<ParamField body="lat" type="number">
+  This is the latitude of our central point, i.e the hotel.
+</ParamField>
+
+<ParamField body="days" type="number">
+  This is the number of days the trip is supposed to lengh.
+</ParamField>
+
+### Response (on success)
+
+<ResponseField name="features" type="GeoJsonFeatureCollection object[]">
+  <Expandable title="properties">
+    <ResponseField name="type" type='"FeatureCollection"'>
+    </ResponseField>
+    <ResponseField name="features" type="GeoJsonFeature object[]">
+    <Expandable title="properties">
+        <ResponseField name="type" type='"Feature"'>
+        </ResponseField>
+        <ResponseField name="id" type="string">
+        </ResponseField>
+        <ResponseField name="geometry" type="GeoJsonFeatureGeometry object">
+        <Expandable title="properties">
+            <ResponseField name="type" type='"Point"'>
+            </ResponseField>
+            <ResponseField name="coordinates" type="number[]">
+            </ResponseField>
+        </Expandable>
+        </ResponseField>
+        <ResponseField name="properties" type="GeoJsonFeatureProperties object">
+        <Expandable title="properties">
+            <ResponseField name="name" type="string">
+            </ResponseField>
+            <ResponseField name="kinds" type="string">
+            </ResponseField>
+            <ResponseField name="rate" type="number">
+            </ResponseField>
+        </Expandable>
+        </ResponseField>
+        <ResponseField name="images" type="string[]">
+        </ResponseField>
+    </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+<ResponseField name="routes" type="GeoJsonFeatureCollection object[]">
+  <Expandable title="properties">
+    <ResponseField name="type" type='"FeatureCollection"'>
+    </ResponseField>
+    <ResponseField name="features" type="GeoJsonFeature object[]">
+    <Expandable title="properties">
+        <ResponseField name="type" type='"Feature"'>
+        </ResponseField>
+        <ResponseField name="id" type="string">
+        </ResponseField>
+        <ResponseField name="geometry" type="GeoJsonFeatureGeometry object">
+        <Expandable title="properties">
+            <ResponseField name="type" type='"Point"'>
+            </ResponseField>
+            <ResponseField name="coordinates" type="number[]">
+            </ResponseField>
+        </Expandable>
+        </ResponseField>
+        <ResponseField name="properties" type="GeoJsonFeatureProperties object">
+        <Expandable title="properties">
+            <ResponseField name="name" type="string">
+            </ResponseField>
+            <ResponseField name="kinds" type="string">
+            </ResponseField>
+            <ResponseField name="rate" type="number">
+            </ResponseField>
+        </Expandable>
+        </ResponseField>
+        <ResponseField name="images" type="string[]">
+        </ResponseField>
+    </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request POST 'https://trottapi.onrender.com/IA' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "days": 5,
+    "lat": 74.0,
+    "lon": 23.0
+}'
+```
+
+</RequestExample>
+
+### Error response codes
+
+<CardGroup cols="2">
+    <Card title="400 Bad Request" icon="exclamation" color="#ff0000">
+        Body is invalid or incomplete
+    </Card>
+
+    <Card title="401 Unauthorized"  icon="xmark" color="#ff0000">
+        Wrong email or password provided
+    </Card>
+
+    <Card title="500 Internal Server Error" icon="bomb" color="#ff0000">
+        Something went wrong. Please contact the owner of this site.
+    </Card>
+</CardGroup>
+
+
