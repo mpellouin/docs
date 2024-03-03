@@ -12,28 +12,28 @@ description: "This endpoint generates given data for a trip itinerary"
 
 ### Body
 
-<ParamField body="lon" type="number">
+<ParamField body="lon" type="number" required>
   This is the longitude of our central point, i.e the hotel.
 </ParamField>
 
-<ParamField body="lat" type="number">
+<ParamField body="lat" type="number" required>
   This is the latitude of our central point, i.e the hotel.
 </ParamField>
 
-<ParamField body="days" type="number">
+<ParamField body="days" type="number" required>
   This is the number of days the trip is supposed to lengh.
 </ParamField>
 
-<ParamField body="transportMean" type='"driving" | "walking" | "cycling"' required="false" default='walking'>
-  The method of transport used by the user. Defaults to walking.
+<ParamField body="transportMean" type='"driving" | "walking" | "cycling"' default='walking'>
+  The method of transport used by the user. Defaults to walking. Optional.
 </ParamField>
 
-<ParamField body="interests" type='string' required="false">
-  The interests of the user separated by commas.
+<ParamField body="interests" type='string'>
+  The interests of the user separated by commas. Optional.
 </ParamField>
 
-<ParamField body="bbox" type='number[4]' required="false">
-  The bounding box surrounding the city. If not provided the old method of radius will be used.
+<ParamField body="bbox" type='number[4]'>
+  The bounding box surrounding the city. If not provided the old method of radius will be used. Optional.
 </ParamField>
 
 ### Response (on success)
@@ -44,35 +44,64 @@ description: "This endpoint generates given data for a trip itinerary"
     </ResponseField>
     <ResponseField name="features" type="GeoJsonFeature object[]">
     <Expandable title="properties">
-        <ResponseField name="type" type='"Feature"'>
-        </ResponseField>
-        <ResponseField name="id" type="string">
-        </ResponseField>
+        <ResponseField name="type" type='"Feature"'></ResponseField>
+        <ResponseField name="id" type="string"></ResponseField>
         <ResponseField name="geometry" type="GeoJsonFeatureGeometry object">
-        <Expandable title="properties">
-            <ResponseField name="type" type='"Point"'>
-            </ResponseField>
-            <ResponseField name="coordinates" type="number[]">
-            </ResponseField>
-        </Expandable>
+          <Expandable title="properties">
+            <ResponseField name="type" type='"Point"'></ResponseField>
+            <ResponseField name="coordinates" type="number[]"></ResponseField>
+          </Expandable>
         </ResponseField>
-        <ResponseField name="properties" type="GeoJsonFeatureProperties object">
-        <Expandable title="properties">
-            <ResponseField name="name" type="string">
+        <ResponseField name="properties" type="FoursquarePlace object">
+          <Expandable title="properties">
+            <ResponseField name="categories" type="FoursquareCategory object[]">
+              <Expandable title="properties">
+                <ResponseField name="id" type="number"></ResponseField>
+                <ResponseField name="name" type="string"></ResponseField>
+              </Expandable>
             </ResponseField>
-            <ResponseField name="kinds" type="string">
+            <ResponseField name="geocodes" type="FoursquareGeocodes object[]">
+              <Expandable title="properties">
+                <ResponseField name="main" type="FoursquareGeocode">
+                  <Expandable title="properties">
+                    <ResponseField name="latitude" type="number"></ResponseField>
+                    <ResponseField name="longitude" type="number"></ResponseField>
+                  </Expandable>
+                </ResponseField>
+              </Expandable>
             </ResponseField>
-            <ResponseField name="rate" type="number">
+            <ResponseField name="location" type="FoursquareLocation object">
+              <Expandable>
+                <ResponseField name="formatted_address" type="string"></ResponseField>
+              </Expandable>
             </ResponseField>
-        </Expandable>
-        </ResponseField>
-        <ResponseField name="images" type="string[]">
+            <ResponseField name="name" type="string"></ResponseField>
+            <ResponseField name="photos" type="FoursquarePhoto object[]">
+              In order to create the photos use prefix ++ original ++ suffix
+              <Expandable>
+                <ResponseField name="prefix" type="string"></ResponseField>
+                <ResponseField name="suffix" type="string"></ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name="social_media" type="FoursquareSocial object">
+              <Expandable>
+                <ResponseField name="twitter" type="string">X id of the user, if it does no exist, this field won't exist.</ResponseField>
+                <ResponseField name="facebook_id" type="string">Facebook id of the user, if it does no exist, this field won't exist.</ResponseField>
+                <ResponseField name="instagram" type="string">Instagram id of the user, if it does no exist, this field won't exist.</ResponseField>
+              </Expandable>
+            </ResponseField>
+            <ResponseField name="tel" type="string"></ResponseField>
+            <ResponseField name="verified" type="boolean">Wether the POI is verified on Foursquare or not</ResponseField>
+            <ResponseField name="website" type="string"></ResponseField>
+            <ResponseField name="description" type="string"></ResponseField>
+            
+          </Expandable>
         </ResponseField>
     </Expandable>
     </ResponseField>
   </Expandable>
 </ResponseField>
-<ResponseField name="routes" type="GeoJsonFeatureCollection object[]">
+<ResponseField name="routes" type="GetItinerateResult object[]">
   <Expandable title="properties">
     <ResponseField name="type" type='"FeatureCollection"'>
     </ResponseField>
@@ -116,7 +145,8 @@ curl --location --request POST 'https://trottapi.onrender.com/IA' \
 --data-raw '{
     "days": 5,
     "lat": 74.0,
-    "lon": 23.0
+    "lon": 23.0,
+    "transportMean": "walking",
 }'
 ```
 
