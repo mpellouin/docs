@@ -24,6 +24,18 @@ description: "This endpoint generates given data for a trip itinerary"
   This is the number of days the trip is supposed to lengh.
 </ParamField>
 
+<ParamField body="transportMean" type='"driving" | "walking" | "cycling"' required="false" default='walking'>
+  The method of transport used by the user. Defaults to walking.
+</ParamField>
+
+<ParamField body="interests" type='string' required="false">
+  The interests of the user separated by commas.
+</ParamField>
+
+<ParamField body="bbox" type='number[4]' required="false">
+  The bounding box surrounding the city. If not provided the old method of radius will be used.
+</ParamField>
+
 ### Response (on success)
 
 <ResponseField name="features" type="GeoJsonFeatureCollection object[]">
