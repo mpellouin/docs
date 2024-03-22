@@ -111,6 +111,16 @@
         "api-reference/endpoint/event/get",
         "api-reference/endpoint/event/getAll"
       ]
+    },
+    {
+      "group": "Tickets",
+      "pages": [
+        "api-reference/endpoint/ticket/create",
+        "api-reference/endpoint/ticket/delete",
+        "api-reference/endpoint/ticket/edit",
+        "api-reference/endpoint/ticket/findOne",
+        "api-reference/endpoint/ticket/findAll"
+      ]
     }
   ]
 }
