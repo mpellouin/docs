@@ -1,0 +1,58 @@
+---
+title: "How it works"
+description: "How to handle the migrations of the database"
+---
+
+# What are migrations
+
+Migrations lets you update the tables and the database structure while being easy to rollback in case anything goes wrong.
+That's why it is important to keep all the migration data for every update.
+
+# Apply the migrations
+
+Whenever you build an instance of the app, you must check that you have the last migration available, then start the
+project in order to run the migration
+
+to do so :  `npm run migration:run`
+
+here is an example of what is should print :
+
+```SQL
+query: SELECT * FROM current_schema()
+query: CREATE EXTENSION IF NOT EXISTS "uuid-ossp"
+query: SELECT version();
+query: SELECT * FROM "information_schema"."tables" WHERE "table_schema" = 'public' AND "table_name" = 'migration_table'
+query: SELECT * FROM "migration_table" "migration_table" ORDER BY "id" DESC
+0 migrations are already loaded in the database.
+1 migrations were found in the source code.
+1 migrations are new migrations must be executed.
+query: START TRANSACTION
+query: ALTER TABLE "ticket" ADD "test" character varying NOT NULL DEFAULT 'null'
+query: ALTER TABLE "trips" ALTER COLUMN "startDate" SET DEFAULT '1711139306177'
+query: ALTER TABLE "trips" ALTER COLUMN "endDate" SET DEFAULT '1711139306177'
+query: INSERT INTO "migration_table"("timestamp", "name") VALUES ($1, $2) -- PARAMETERS: [1711139303995,"Test1711139303995"]
+Migration Test1711139303995 has been  executed successfully.
+query: COMMIT
+```
+
+Migrations have been applied successfully
+
+# Create a migration
+
+If you did some modifications to the tables and need to apply them, first you need to create the migration.
+
+to do so : `npm run migration:generate --name={name_of_migration}`
+
+it should generate a document in `src/migrations`
+
+then you can `apply` the migration and it should all be good to go !
+
+# Revert a migration
+
+If the migration you applied creates problems and troubleshooting does nothing, you can revert it. by default it will
+reverse the last executed migration.
+
+to do so : `npm run migrate:revert`
+
+
+
