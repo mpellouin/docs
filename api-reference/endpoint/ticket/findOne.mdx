@@ -1,0 +1,160 @@
+---
+title: "Get one Ticket"
+api: "GET https://trottapi.onrender.com/ticket/all"
+description: "Get the first ticket that correspond to the filters, if the filters are empty you'll a random ticket"
+---
+
+### Params
+
+<ParamField type="string" header="Authorization">
+    Header in form of Bearer \<jwt\>
+</ParamField>
+
+### Body
+
+<Card title="What are the filters ?" icon="filter" color="#ff0000">
+    All the properties from sent to the body are considered as `filters`, you can add as much as you want from the property list.
+    If there are no filters, then it act as a normal query without filters
+</Card>
+
+<ParamField body="userID" type="string">
+    The ID of the user that request to create a ticket.
+</ParamField>
+
+<ParamField body="title" type="string">
+    Title of the ticket.
+</ParamField>
+
+<ParamField body="contactEmail" type="string">
+    Email to contact the ticket author.
+</ParamField>
+
+<ParamField body="category" type="string">
+    The category of the ticket ("trips", "event", "account", "feedback", "other")
+</ParamField>
+
+<ParamField body="description" type="string">
+    description of the ticket.
+</ParamField>
+
+<ParamField title="To be updated" body="status" icon="exclamation" type="string" default="open">
+    Status of the ticket ("open", "pending", "stuck", "closed")
+</ParamField>
+
+<ParamField body="messsages" type="string">
+    Array of the previous messages of the ticket : ["message 1", "message 2", "message 3"]
+</ParamField>
+
+<ParamField body="id" type="string">
+    id of the ticket.
+</ParamField>
+
+### Response (on success)
+
+<ResponseField name="response" type="object">
+    The first ticket corresponding to the filters.
+
+    <Expandable title="Toggle object">
+
+        <ResponseField name="id" type="string">
+            This is the internal ID of the ticket.
+        </ResponseField>
+
+        <ResponseField name="createDateTime" type="string">
+            This is the date and time when the ticket was created.
+        </ResponseField>
+
+        <ResponseField name="userID" type="string">
+            This is the ID of the user who submitted the ticket.
+        </ResponseField>
+
+        <ResponseField name="title" type="string">
+            This is the title of the ticket.
+        </ResponseField>
+
+        <ResponseField name="contactEmail" type="string">
+            This is the contact email associated with the ticket.
+        </ResponseField>
+
+        <ResponseField name="category" type="string">
+            This is the category of the ticket.
+        </ResponseField>
+
+        <ResponseField name="description" type="string">
+            This is the description of the issue reported in the ticket.
+        </ResponseField>
+
+        <ResponseField name="status" type="string">
+            This is the current status of the ticket.
+        </ResponseField>
+
+        <ResponseField name="messages" type="object">
+
+            This is an array containing messages exchanged regarding the ticket.
+
+            <Expandable title="Toggle object">
+
+                <ResponseField name="author" type="string">
+                    This is the author of a message in the conversation.
+                </ResponseField>
+
+                <ResponseField name="message" type="string">
+                    This is the content of a message in the conversation.
+                </ResponseField>
+
+            </Expandable>
+
+        </ResponseField>
+
+    </Expandable>
+
+</ResponseField>
+
+<RequestExample>
+
+    ```bash Example Request
+    curl --location --request GET 'https://trottapi.onrender.com/api/ticket' \
+    --header 'Content-Type: application/json' \
+    --header 'Authorization: Token <token>' \
+    --data-raw '{
+        "contactEmail": "mail@test.com",
+        "category": "bug",
+        "status": "Stuck",
+    }'
+    ```
+
+</RequestExample>
+
+<ResponseExample>
+
+    ```json Response
+    {
+        [
+            {
+                "id": "101c4a40-7f5a-48c5-b813-a5625773d351",
+                "createDateTime": "2024-03-21T15:46:28.281Z",
+                "lastChangedDateTime": "2024-03-21T15:46:28.281Z",
+                "userID": "5e8c1fe8-d231-429e-88f1-b95bdb72a6db",
+                "title": "help me, again",
+                "contactEmail": "mail@test.com",
+                "category": "bug",
+                "description": "there is a bug again, plz fix",
+                "status": "Stuck",
+                "messages": [
+                    {
+                        "author": "Admin",
+                        "message": "plz more details"
+                    },
+                    {
+                        "author": "User",
+                        "message": "no, no details, just fix"
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+
+</ResponseExample>
+
+
