@@ -63,7 +63,7 @@ The contents of the user group
 ```bash Example Request
 curl --location --request POST 'https://trotter.francecentral.cloudapp.azure.com/api/user' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'Authorization: Bearer <token>' \
 --data-raw '{
     "current_token": ""
 }'

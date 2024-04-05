@@ -106,7 +106,7 @@ description: "Saves a ticket"
 ```bash Example Request
 curl --location --request POST 'https://trotter.francecentral.cloudapp.azure.com/api/ticket' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'Authorization: Bearer <token>' \
 --data-raw '{
         "userID": "5e8c1fe8-d231-429e-88f1-b95bdb72a6db",
         "title": "help me, again",

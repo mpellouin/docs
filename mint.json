@@ -125,6 +125,12 @@
         "api-reference/endpoint/ticket/findOne",
         "api-reference/endpoint/ticket/findAll"
       ]
+    },
+    {
+      "group": "User",
+      "pages": [
+        "api-reference/endpoint/user/get_my_user"
+      ]
     }
   ]
 }

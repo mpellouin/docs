@@ -1,0 +1,65 @@
+---
+title: "Create User"
+api: "GET https://trotter.francecentral.cloudapp.azure.com/user/me"
+description: "This endpoint allows a connected user to get its informations"
+---
+
+### Params
+
+<ParamField type="string" header="Authorization">
+    Header in form of Bearer \<jwt\>
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  The user id
+</ResponseField>
+<ResponseField name="createDateTime" type="string">
+  The time the user has been created in UTC
+</ResponseField>
+<ResponseField name="lastChangedDateTime" type="string">
+  The time the user has last been modified in UTC
+</ResponseField>
+<ResponseField name="username" type="string">
+  The user's username
+</ResponseField>
+<ResponseField name="email" type="string">
+  The user's email
+</ResponseField>
+<ResponseField name="birthdate" type="string">
+  The user's birthday, empty string if not known
+</ResponseField>
+<ResponseField name="phone_number" type="string">
+  The user's phone number, empty string if not known
+</ResponseField>
+<ResponseField name="profile_picture" type="string">
+  honestly this will always be empty since we are not gonna ask a user for a link
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request GET 'https://trotter.francecentral.cloudapp.azure.com/user/me' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "id": "6cf5ec40-8671-4f45-8fc9-c286ceb72ccd",
+    "createDateTime": "2024-03-01T07:25:57.960Z",
+    "lastChangedDateTime": "2024-03-01T07:25:57.960Z",
+    "username": "albert@alber.fr",
+    "email": "albert@alber.fr",
+    "birthdate": "",
+    "phone_number": "",
+    "profile_picture": ""
+}
+```
+
+</ResponseExample>

@@ -115,7 +115,7 @@ description: "Get all tickets that corresponds to the filters applied, if the fi
     ```bash Example Request
     curl --location --request GET 'https://trotter.francecentral.cloudapp.azure.com/api/ticket/all' \
     --header 'Content-Type: application/json' \
-    --header 'Authorization: Token <token>' \
+    --header 'Authorization: Bearer <token>' \
     --data-raw '{
         "contactEmail": "mail@test.com",
         "category": "bug",

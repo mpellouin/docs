@@ -73,7 +73,7 @@ The contents of the user group
 ```bash Example Request
 curl --location --request PUT 'https://trotter.francecentral.cloudapp.azure.com/api/user' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Token <token>' \
+--header 'Authorization: Bearer <token>' \
 --data-raw '{
     "user_group_id": "example_1",
     "name": "Example 1",
