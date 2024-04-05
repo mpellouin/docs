@@ -129,7 +129,9 @@
     {
       "group": "User",
       "pages": [
-        "api-reference/endpoint/user/get_my_user"
+        "api-reference/endpoint/user/get_my_user",
+        "api-reference/endpoint/user/update",
+        "api-reference/endpoint/user/delete"
       ]
     }
   ]

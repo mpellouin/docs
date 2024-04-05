@@ -1,0 +1,39 @@
+---
+title: "Deletes an User"
+api: "DELETE https://trotter.francecentral.cloudapp.azure.com/user/:id"
+description: "This endpoint allows a connected user to delete its account"
+---
+
+### Params
+
+<ParamField type="string" header="Authorization">
+    Header in form of Bearer \<jwt\>
+</ParamField>
+
+### Response
+
+<ResponseField name="message" type="string">
+    Additional informations, will most likely be "user deleted"
+</ResponseField>
+
+Empty Response
+
+<RequestExample>
+
+```bash Example Request
+curl --location --request DELETE 'https://trotter.francecentral.cloudapp.azure.com/user/6cf5ec40-8671-4f45-8fc9-c286ceb72ccd' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer <token>' \
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "message": "user deleted"
+}
+```
+
+</ResponseExample>
