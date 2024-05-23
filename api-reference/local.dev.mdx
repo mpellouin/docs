@@ -1,0 +1,49 @@
+---
+title: "Local Dev"
+description: "How to run the back-end locally"
+---
+
+# Setup
+
+You'll need to install docker, then clone the api repository.
+
+next step is to setup the .env file like following :
+
+```bash
+# All the undefined values can be find in the ressources channel of the backend, watch out as they can be prod values
+
+BASE_URL="http://localhost:8080" #url of the api, important for OAuth and company
+PORT="8080"
+DEV_URI="*"
+MAPBOX_TOKEN=""
+JWT_SECRET=""
+CLIENT_URI="http://localhost:3000"
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
+FACEBOOK_CLIENT_ID=""
+FACEBOOK_CLIENT_SECRET=""
+TWITTER_CONSUMER_KEY=""
+TWITTER_CONSUMER_SECRET=""
+LINKEDIN_CLIENT_ID=""
+LINKEDIN_CLIENT_SECRET=""
+TRACKING_DISCORD_WEBHOOK_URL=""
+DB_URI=""
+AI_SERVER_URI=""
+AI_SERVER_SECRET=""
+FLICKR_API_KEY=""
+FLICKR_SECRET=""
+FOURSQUARE_SECRET=""
+DB_SSL="false" # Should be false when working locally
+IS_PROD="false" # Should be false when working locally
+LOG_SQL="false" # Depends if you want to see the SQL transactions to the database
+COST_OF_LIVING_API=""
+COST_OF_LIVING_API_KEY=""
+```
+
+# Run the back
+
+to run the back-end you just need to run the following command :
+
+`docker compose up`
+
+Both the local Postgres and Api shoud now run automatically, and all the changes to the api should automatically reload as you do some changes.

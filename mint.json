@@ -52,8 +52,11 @@
       "pages": ["introduction", "quickstart", "development", "api-reference/authentication"]
     },
     {
-      "group": "Migration",
-      "pages": ["api-reference/migration"]
+      "group": "Back-end",
+      "pages": [
+        "api-reference/migration",
+        "api-reference/local.dev"
+      ]
     },
     {
       "group": "Local Authentication",
